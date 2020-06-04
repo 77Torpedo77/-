@@ -1,0 +1,52 @@
+基操：
+创建仓库：选择一个合适的位置，右键打开bash，输入git init
+添加文件至暂存区：git add 文件名
+提交更改：git commit -m "备注"
+显示提交日志：git log //--pertty=oneline 简洁模式
+显示每一次操作：git reflog
+回退版本：git reset --hard 版本号 //HEAD^=上一个版本的版本号
+撤销工作区的修改：git checkout -- 文件名
+撤销缓存区的修改：git reset HEAD 文件名
+删除文件git rm 文件名 + 提交更改
+删错了恢复：git checkout -- 文件名
+查看工作区状态：git status
+
+远程库：
+1.创建ssh key：ssh-keygen -t rsa -C "youremail@example.com"
+2.登录GitHub在key中填写id_rsa.pub中的内容。
+关联本地库：git remote add origin git@github.com:账户名/本地库.git
+推送本地库内容至远程(当前分支)：git push -u origin master//-u参数会关联本地和远程的master分支
+后续推送：git push 远程库名 
+从远程克隆：git clone git@github.com:用户名/远程库名.git
+创建远程库的分支到本地：git checkout -b 本地分支名 origin/远程分支名
+查看远程库信息：git remote// 详细信息：git remote -v
+设置本地与远程分支的连接：git branch --set-upstream-to=origin/远程分支名 本地分支名
+抓取远程库的提交：git pull
+
+
+分支：
+创建并切换到分支：git switch -c 分支名
+查看当前分支:git branch
+查看远程库分支+本地分支：git branch -a
+快速合并：git merge 要合并过来的分支名
+禁用快速合并：git merge --no--ff -m "备注" 要合并过来的分支名
+删除分支：git branch -d 分支名 
+强行删除未合并过的分支：git branch -D 分支名
+分支合并图：git log --graph
+临时保存工作：git stash
+查看临时工作：git stash list
+1.恢复现场：git stash apply（@{号数}）//不删除stash的恢复+git stash drop//删除stash
+2.恢复现场：git stash pop//1.的等效
+
+标签：需先切换至想要打标签的分支上
+在最新的commit上打标签：git tag 标签名
+在指定commit上打标签：git tag 标签名 commit的id
+创建带说明的标签：git tag -a 标签名 -m "说明" commit的id
+查看标签信息：git show 标签名
+查看所有标签：git tag
+删除标签：git tag -d 标签名
+删除远程标签：删除本地标签+git push origin :refs/tags/标签名
+推送标签到远程：git push origin 标签名
+一次推送所有标签：git push origin --tags
+
+
